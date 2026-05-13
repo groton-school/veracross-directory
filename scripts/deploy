@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+import gcloud from '@battis/partly-gcloudy';
+import { Core } from '@qui-cli/core';
+import { Env } from '@qui-cli/env';
+
+await Core.run();
+// enable secret manager and publish credentials
+// create service account with secret manager accessor and secret manager version manager permissions
+// write service account email to SERVICE_ACCOUNT
+await gcloud.batch.run.deployService({
+  defaultName: 'Veracross Directory',
+  serviceName: 'directory',
+  serviceAccount: await Env.get({ key: 'SERVICE_ACCOUNT' }),
+  env: true,
+  args: {
+    ...gcloud.batch.run.DEFAULT_ARGS,
+    'set-env-vars': [
+      `GOOGLE_CLOUD_PROJECT=${gcloud.projects.active.getIdentifier()}`,
+      `FRAME_ANCESTORS=${await Env.get({ key: 'FRAME_ANCESTORS' })}`
+    ].join(','),
+    'allow-unauthenticated': true
+  }
+});
