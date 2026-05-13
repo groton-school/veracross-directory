@@ -1,4 +1,4 @@
-import FacStaff from '@/app/ui/FacStaff';
+import FacStaff from '@components/FacStaff';
 import * as Veracross from '@lib/Veracross';
 import { Button, FormControl, InputGroup } from 'react-bootstrap';
 

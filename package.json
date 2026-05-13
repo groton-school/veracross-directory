@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "run-s build:*",
-    "build:data": "openapi-typescript \"https://stoplight.io/api/v1/projects/veracross/docs/nodes/reference/Data-API.yaml\" -o ./app/lib/Veracross/Data.ts",
+    "build:data": "openapi-typescript \"https://stoplight.io/api/v1/projects/veracross/docs/nodes/reference/Data-API.yaml\" -o ./src/lib/Veracross/Data.ts",
     "build:compile": "next build",
     "deploy": "run-s deploy:*",
     "deploy:build": "run-s build",

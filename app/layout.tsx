@@ -1,8 +1,8 @@
+import Bootstrap from '@components/Bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import type { Metadata } from 'next';
 import { connection } from 'next/server';
 import { Container } from 'react-bootstrap';
-import Bootstrap from './components/Client/Bootstrap';
 import './globals.css';
 
 export const metadata: Metadata = {

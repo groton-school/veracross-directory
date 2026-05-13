@@ -1,8 +1,6 @@
-import { authorizationURL } from '@lib/Veracross';
+import { Auth } from '@/src/lib/Veracross';
 import { NextResponse } from 'next/server';
 
-export const dynamic = 'force-dynamic';
-
 export async function GET() {
-  return NextResponse.redirect(await authorizationURL());
+  return NextResponse.redirect(await Auth.authorizationURL());
 }

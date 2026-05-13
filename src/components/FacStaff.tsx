@@ -1,5 +1,7 @@
+'use client';
+
+import { operations } from '@/src/lib/Veracross/Data';
 import { ArrayElement } from '@battis/typescript-tricks';
-import { operations } from '@lib/Veracross/Data';
 import { Card, Row } from 'react-bootstrap';
 import Photo from './Photo';
 

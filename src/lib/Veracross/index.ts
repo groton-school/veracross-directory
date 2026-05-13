@@ -1,9 +1,9 @@
 import createClient from 'openapi-fetch';
+import { getTokens } from './Auth';
 import { credentials } from './Credentials';
 import { paths } from './Data';
-import { getTokens } from './Tokens';
 
-export { authorizationURL } from './Tokens';
+export * as Auth from './Auth';
 
 const data = createClient<paths>({
   baseUrl: `https://api.veracross.com/${(await credentials()).school_route}/v3`

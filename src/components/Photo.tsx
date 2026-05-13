@@ -1,3 +1,5 @@
+'use client';
+
 import { URLString } from '@battis/descriptive-types';
 import { Image } from 'react-bootstrap';
 
