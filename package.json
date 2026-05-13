@@ -1,7 +1,12 @@
 {
-  "name": "veracross-directory",
+  "name": "@groton/veracross-directory",
   "version": "0.0.0",
   "private": true,
+  "description": "A directory for Veracross configurable by audience and embeddable in the portal",
+  "author": {
+    "name": "Seth Battis",
+    "email": "sbattis@groton.org"
+  },
   "type": "module",
   "scripts": {
     "dev": "next dev",
