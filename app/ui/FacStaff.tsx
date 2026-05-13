@@ -16,15 +16,19 @@ export default function FacStaff({ person }: { person: DirectoryEntry }) {
         </div>
         <div className="w-75">
           <h5>{person.full_name}</h5>
-          <p>{person.job_title}</p>
-          <p>{person.biography}</p>
-          <p>{person.department}</p>
-          <p>
-            <a href={`mailto:${person.email}`}>
-              <code>{person.email}</code>
-            </a>
-          </p>
-          <p>{person.phone_business}</p>
+          {person.job_title ? <p>{person.job_title}</p> : ''}
+          {person.biography ? <p>{person.biography}</p> : ''}
+          {person.department ? <p>{person.department}</p> : ''}
+          {person.email ? (
+            <p>
+              <a href={`mailto:${person.email}`}>
+                <code>{person.email}</code>
+              </a>
+            </p>
+          ) : (
+            ''
+          )}
+          {person.phone_business ? <p>{person.phone_business}</p> : ''}
         </div>
       </Row>
     </Card>
