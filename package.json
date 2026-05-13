@@ -38,7 +38,7 @@
     "@battis/prettier-config": "^1.7.3",
     "@battis/typescript-tricks": "^0.8.2",
     "@commitlint/config-conventional": "^21.0.0",
-    "@commitlint/config-pnpm-scopes": "^21.0.0",
+    "@commitlint/config-pnpm-scopes": "^21.0.1",
     "@inquirer/input": "^5.0.13",
     "@prettier/plugin-xml": "^3.4.2",
     "@qui-cli/core": "^7.0.0",
