@@ -2,14 +2,22 @@
 
 import { operations } from '@/src/lib/Veracross/Data';
 import { ArrayElement } from '@battis/typescript-tricks';
+import { Recording } from '@lib/NameDrop';
 import { Card, Row } from 'react-bootstrap';
+import { NamePronunciation } from './NamePronunciation';
 import Photo from './Photo';
 
 type DirectoryEntry = ArrayElement<
   operations['list_directory_staff_faculty']['responses']['200']['content']['application/json']['data']
 >;
 
-export default function FacStaff({ person }: { person: DirectoryEntry }) {
+export default function FacStaff({
+  person,
+  recording
+}: {
+  person: DirectoryEntry;
+  recording?: Recording;
+}) {
   return (
     <Card className="m-3 p-3">
       <Row>
@@ -18,6 +26,7 @@ export default function FacStaff({ person }: { person: DirectoryEntry }) {
         </div>
         <div className="w-75">
           <h5>{person.full_name}</h5>
+          {recording ? <NamePronunciation recording={recording} /> : ''}
           {person.job_title ? <p>{person.job_title}</p> : ''}
           {person.biography ? <p>{person.biography}</p> : ''}
           {person.department ? <p>{person.department}</p> : ''}

@@ -46,6 +46,7 @@ export function proxy(request: NextRequest) {
     script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${isDev ? " 'unsafe-eval'" : ''};
     style-src 'self' 'nonce-${nonce}';
     img-src 'self' blob: data: https://*.veracross.com https://res.cloudinary.com/veracross/image/upload/v1590100679/default.png;
+    media-src 'self' blob: data: https://*.amazonaws.com/data.namedrop.io/otu/audio/;
     font-src 'self';
     object-src 'none';
     base-uri 'self';
