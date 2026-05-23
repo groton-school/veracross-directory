@@ -3,13 +3,12 @@
 import { URLString } from '@battis/descriptive-types';
 import { Image } from 'react-bootstrap';
 
-export function Photo({
-  photo_url,
-  full_name
-}: {
+export type Properties = {
   photo_url: URLString;
   full_name: string;
-}) {
+};
+
+export function Node({ photo_url, full_name }: Properties) {
   return (
     <div className="ratio ratio-1x1">
       <Image
@@ -20,3 +19,5 @@ export function Photo({
     </div>
   );
 }
+
+export default Node;

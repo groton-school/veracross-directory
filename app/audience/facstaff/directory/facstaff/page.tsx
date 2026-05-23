@@ -1,0 +1,48 @@
+import { Item } from '@/src/components/FacStaff/Item';
+import { Loading } from '@/src/components/Loading';
+import Search from '@/src/components/Search';
+import { recording } from '@/src/lib/NameDrop';
+import { Directory } from '@/src/lib/Veracross';
+import { connection } from 'next/server';
+import { Suspense } from 'react';
+
+type SearchParameters = { query?: string };
+type Properties = { searchParams: Promise<SearchParameters> };
+
+export default function Page({ searchParams }: Properties) {
+  return (
+    <>
+      <h1>Faculty & Staff</h1>
+      <Suspense fallback={<Loading />}>
+        <Search />
+        <DynamicContent searchParams={searchParams} />
+      </Suspense>
+    </>
+  );
+}
+
+async function DynamicContent({ searchParams }: Properties) {
+  await connection();
+  const params = await searchParams;
+  const query = (params.query || '').toLowerCase();
+  return (
+    <>
+      {(await Directory.listFacStaff())
+        .filter(
+          (person) =>
+            person.full_name.toLowerCase().includes(query) ||
+            person.job_title.toLowerCase().includes(query) ||
+            person.department.toLowerCase().includes(query) ||
+            person.names.toLowerCase().includes(query)
+        )
+        .map(async (person, i) => (
+          <Item
+            key={i}
+            audience="facstaff"
+            person={person}
+            recording={await recording(person.email)}
+          />
+        ))}
+    </>
+  );
+}
