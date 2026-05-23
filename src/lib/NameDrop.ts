@@ -34,5 +34,9 @@ export async function recordings() {
     })
   ).json();
 
-  return _recordings;
+  return _recordings?.directory;
+}
+
+export async function recording(email: EmailString) {
+  return (await recordings())?.find((recording) => recording.email === email);
 }

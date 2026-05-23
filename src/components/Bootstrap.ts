@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-export default function Bootstrap() {
+export function Bootstrap() {
   useEffect(() => {
     import('bootstrap');
   }, []);

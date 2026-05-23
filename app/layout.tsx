@@ -1,4 +1,4 @@
-import Bootstrap from '@components/Bootstrap';
+import { Bootstrap } from '@/src/components/Bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import type { Metadata } from 'next';
 import { connection } from 'next/server';
@@ -11,15 +11,18 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({
-  children
+  children,
+  modal
 }: Readonly<{
   children: React.ReactNode;
+  modal?: React.ReactNode;
 }>) {
   await connection();
   return (
     <html lang="en">
       <body>
         <Container className="mt-3">{children}</Container>
+        {modal}
         <Bootstrap />
       </body>
     </html>

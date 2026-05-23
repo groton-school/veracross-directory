@@ -3,7 +3,7 @@
 import { URLString } from '@battis/descriptive-types';
 import { Image } from 'react-bootstrap';
 
-export default function Photo({
+export function Photo({
   photo_url,
   full_name
 }: {

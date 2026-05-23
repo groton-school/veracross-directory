@@ -56,12 +56,27 @@ export async function handleOAuth2Redirect(url: URL) {
     };
     code_verifier = undefined;
     state = undefined;
-    tokens = await authorizationCodeGrant(await config(), url, checks);
+    const { redirect_uri, scope } = await credentials();
+    /*
+     * FIXME work out URL detection within Google Cloud Run
+     *    Arbitrarily assuming the URL of the redirect_uri is wildly trusting
+     *    and inappropriate
+     */
+    const redirect = new URL(redirect_uri);
+    url.host = `${redirect.host}:${
+      redirect.port !== ''
+        ? redirect.port
+        : redirect.protocol === 'https:'
+          ? 443
+          : 80
+    }`;
+    tokens = await authorizationCodeGrant(await config(), url, checks, {
+      scope
+    });
     store(tokens);
     return;
   }
-
-  throw new Error('missing state');
+  throw new Error('No state available to verify authorization');
 }
 
 export async function refresh(refresh_token?: string) {
@@ -89,7 +104,7 @@ export async function getTokens() {
     tokens = await refresh(await LazySecrets.get<string>(REFRESH_TOKEN));
   }
   if (!tokens) {
-    throw new Error();
+    throw new Error('No refresh token received');
   } else {
     return tokens;
   }
