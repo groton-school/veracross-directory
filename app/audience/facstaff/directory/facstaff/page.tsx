@@ -30,10 +30,12 @@ async function DynamicContent({ searchParams }: Properties) {
       {(await Directory.listFacStaff())
         .filter(
           (person) =>
-            person.full_name.toLowerCase().includes(query) ||
-            person.job_title.toLowerCase().includes(query) ||
-            person.department.toLowerCase().includes(query) ||
-            person.names.toLowerCase().includes(query)
+            (person.full_name &&
+              person.full_name.toLowerCase().includes(query)) ||
+            (person.job_title &&
+              person.job_title.toLowerCase().includes(query)) ||
+            (person.department &&
+              person.department.toLowerCase().includes(query))
         )
         .map(async (person, i) => (
           <Item

@@ -7,7 +7,6 @@ import { useDebouncedCallback } from 'use-debounce';
 export function Node() {
   const searchParams = useSearchParams();
   const pathName = usePathname();
-  const query = searchParams.get('query') || undefined;
   const { replace } = useRouter();
 
   const search = useDebouncedCallback((query?: string) => {
@@ -25,7 +24,7 @@ export function Node() {
       <FormControl
         type="text"
         placeholder="Search for faculty & staff…"
-        value={query}
+        defaultValue={searchParams.get('query')?.toString()}
         onChange={(event) => {
           search(event.target.value);
         }}
