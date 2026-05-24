@@ -2,7 +2,7 @@ import { Item } from '@/src/components/FacStaff/Item';
 import { Loading } from '@/src/components/Loading';
 import Search from '@/src/components/Search';
 import { recording } from '@/src/lib/NameDrop';
-import { Directory } from '@/src/lib/Veracross';
+import { Data } from '@/src/lib/Veracross';
 import { connection } from 'next/server';
 import { Suspense } from 'react';
 
@@ -27,7 +27,7 @@ async function DynamicContent({ searchParams }: Properties) {
   const query = (params.query || '').toLowerCase();
   return (
     <>
-      {(await Directory.listFacStaff())
+      {(await Data.Directory.StaffFaculty.list())
         .filter(
           (person) =>
             (person.full_name &&

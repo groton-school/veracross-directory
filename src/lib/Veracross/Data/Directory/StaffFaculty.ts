@@ -1,23 +1,23 @@
 import { ArrayElement } from '@battis/typescript-tricks';
 import { cacheLife } from 'next/cache';
-import { Data } from '../Data';
-import { operations } from '../DataAPI';
+import { client } from '../Client';
+import { operations } from '../spec';
 
-export type FacStaff = ArrayElement<
+export type Person = ArrayElement<
   operations['list_directory_staff_faculty']['responses']['200']['content']['application/json']['data']
 >;
 
-export async function listFacStaff() {
+export async function list() {
   'use cache';
   cacheLife('hours');
 
-  const directory: FacStaff[] = [];
+  const directory: Person[] = [];
   const page_size = 200;
   let page = 0;
   let done = false;
   do {
     page++;
-    const { data, error } = await Data.GET('/directory/staff_faculty', {
+    const { data, error } = await client.GET('/directory/staff_faculty', {
       params: { header: { 'X-Page-Number': page, 'X-Page-Size': page_size } }
     });
     if (error) {
@@ -31,8 +31,8 @@ export async function listFacStaff() {
   return directory;
 }
 
-export async function getFacStaff(person_id: number) {
-  return (await listFacStaff())
+export async function read(person_id: number) {
+  return (await list())
     .filter((person) => person.person_id === person_id)
     .shift();
 }

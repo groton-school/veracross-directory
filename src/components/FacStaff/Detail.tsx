@@ -1,6 +1,5 @@
 import IfDefined from '@/src/components/IfDefined';
-import type { ContactInfo, HouseHold } from '@/src/lib/Veracross';
-import { FacStaff } from '@/src/lib/Veracross/Directory';
+import type { Data } from '@/src/lib/Veracross';
 import { Audience } from '@/src/model/Audience';
 import Link from 'next/link';
 import { Row } from 'react-bootstrap';
@@ -11,9 +10,9 @@ import Department from './Department';
 
 export type Properties = {
   audience: Audience;
-  person: FacStaff;
-  contact_info: ContactInfo;
-  household: HouseHold;
+  person: Data.Directory.StaffFaculty.Person;
+  contact_info: Data.ContactInfo.ContactInfo;
+  household: Data.Households.Household;
 } & NamePronunciation.Properties;
 
 export async function Detail({

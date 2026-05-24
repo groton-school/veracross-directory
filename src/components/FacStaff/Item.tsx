@@ -1,7 +1,7 @@
 import IfDefined from '@/src/components/IfDefined';
 import * as NamePronunciation from '@/src/components/NamePronunciation';
 import * as Photo from '@/src/components/Photo';
-import type * as Veracross from '@/src/lib/Veracross';
+import type { Data } from '@/src/lib/Veracross';
 import { Audience } from '@/src/model/Audience';
 import Link from 'next/link';
 import { Card, Row } from 'react-bootstrap';
@@ -9,7 +9,7 @@ import Department from './Department';
 
 export type Properties = {
   audience: Audience;
-  person: Veracross.Directory.FacStaff;
+  person: Data.Directory.StaffFaculty.Person;
 } & NamePronunciation.Properties;
 
 export function Item({ person, ...props }: Properties) {

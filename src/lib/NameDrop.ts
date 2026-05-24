@@ -5,6 +5,7 @@ import {
   UUIDString
 } from '@battis/descriptive-types';
 import { LazySecrets } from '@battis/lazy-secrets';
+import { cacheLife } from 'next/cache';
 
 export type Recording = {
   firstname: string;
@@ -26,6 +27,8 @@ type Recordings = {
 let _recordings: Recordings | undefined = undefined;
 
 export async function recordings() {
+  'use cache';
+  cacheLife('hours');
   _recordings = await (
     await fetch('https://api.namedrop.io/otu/org/admin', {
       method: 'POST',

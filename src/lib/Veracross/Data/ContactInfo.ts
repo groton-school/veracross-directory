@@ -1,19 +1,20 @@
 import { cacheLife } from 'next/cache';
-import { Data } from './Data';
-import { operations } from './DataAPI';
+import { client } from './Client';
+import { operations } from './spec';
 
 export type ContactInfo =
   operations['read_contact_info']['responses']['200']['content']['application/json']['data'];
 
 /** @param id Person ID */
-export async function getContactInfo(id: number) {
+export async function read(id: number) {
   'use cache';
   cacheLife('hours');
-  const { data, error } = await Data.GET('/contact_info/{id}', {
+  const { data, error } = await client.GET('/contact_info/{id}', {
     params: { path: { id } }
   });
   if (error) {
-    throw new Error('Could not retrieve contact info', { cause: error });
+    console.error(error);
+    return {} as ContactInfo;
   }
   return data.data;
 }

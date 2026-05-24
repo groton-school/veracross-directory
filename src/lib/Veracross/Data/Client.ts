@@ -1,12 +1,12 @@
 import createClient from 'openapi-fetch';
-import { getTokens } from './Auth';
-import { credentials } from './Credentials';
-import { paths } from './DataAPI';
+import { getTokens } from '../Auth';
+import { credentials } from '../Credentials';
+import { paths } from './spec';
 
-const data = createClient<paths>({
+export const client = createClient<paths>({
   baseUrl: `https://api.veracross.com/${(await credentials()).school_route}/v3`
 });
-data.use({
+client.use({
   onRequest: async ({ request }) => {
     request.headers.set(
       'Authorization',
@@ -15,5 +15,3 @@ data.use({
     return request;
   }
 });
-
-export { data as Data };
