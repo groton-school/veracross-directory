@@ -1,0 +1,11 @@
+.data-field {
+  .label {
+    font-size: smaller;
+  }
+}
+
+.data-field.inline {
+  .label {
+    display: none;
+  }
+}

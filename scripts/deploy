@@ -5,10 +5,10 @@ import { Core } from '@qui-cli/core';
 import { Env } from '@qui-cli/env';
 
 await Core.run();
-// enable auto-billing
-// enable secret manager and publish credentials
-// create service account with secret manager accessor and secret manager version manager permissions
-// write service account email to SERVICE_ACCOUNT
+// TOOO enable auto-billing
+// TODO enable secret manager and publish credentials
+// TODO create service account with secret manager accessor and secret manager version manager permissions
+// TODO write service account email to SERVICE_ACCOUNT
 await gcloud.batch.run.deployService({
   defaultName: 'Veracross Directory',
   serviceName: 'directory',

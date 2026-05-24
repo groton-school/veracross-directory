@@ -6,8 +6,9 @@ import { connection } from 'next/server';
 import { Suspense } from 'react';
 
 type PathParameters = { person_id: string };
+export type Properties = { params: Promise<PathParameters> };
 
-export default function Page({ params }: { params: Promise<PathParameters> }) {
+export default function Page({ params }: Properties) {
   return (
     <Suspense fallback={<Loading />}>
       <DynamicContent params={params} />
@@ -15,7 +16,7 @@ export default function Page({ params }: { params: Promise<PathParameters> }) {
   );
 }
 
-async function DynamicContent({ params }: { params: Promise<PathParameters> }) {
+async function DynamicContent({ params }: Properties) {
   await connection();
   const person_id = parseInt((await params).person_id);
   if (person_id) {
