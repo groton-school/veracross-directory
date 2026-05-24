@@ -1,11 +1,8 @@
 import { ArrayElement } from '@battis/typescript-tricks';
 import { cacheLife } from 'next/cache';
-import { client } from '../Client';
-import { operations } from '../spec';
+import { APIResponse, client } from '../Client';
 
-export type Person = ArrayElement<
-  operations['list_directory_staff_faculty']['responses']['200']['content']['application/json']['data']
->;
+export type Person = ArrayElement<APIResponse<'list_directory_staff_faculty'>>;
 
 export async function list() {
   'use cache';

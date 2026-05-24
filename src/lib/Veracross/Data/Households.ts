@@ -1,10 +1,8 @@
 import { cacheLife } from 'next/cache';
-import { client } from './Client';
+import { APIResponse, client } from './Client';
 import * as ContactInfo from './ContactInfo';
-import { operations } from './spec';
 
-export type Household =
-  operations['read_households']['responses']['200']['content']['application/json']['data'];
+export type Household = APIResponse<'read_households'>;
 
 export async function readFor(person_id: number) {
   const contact_info = await ContactInfo.read(person_id);
