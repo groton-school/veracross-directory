@@ -13,7 +13,7 @@ export async function getContactInfo(id: number) {
     params: { path: { id } }
   });
   if (error) {
-    throw new Error('Could retrieve contact info', { cause: error });
+    throw new Error('Could not retrieve contact info', { cause: error });
   }
   return data.data;
 }
