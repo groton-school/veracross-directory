@@ -1,8 +1,8 @@
-import IfDefined from '@/src/components/IfDefined/Base';
+import IfDefined from '@/src/components/IfDefined/IfDefined';
 import * as NamePronunciation from '@/src/components/NamePronunciation';
 import * as Photo from '@/src/components/Photo';
+import { Audience } from '@/src/lib/Definitions';
 import type { Data } from '@/src/lib/Veracross';
-import { Audience } from '@/src/model/Audience';
 import Link from 'next/link';
 import { Card, CardBody, CardFooter, Row, Table } from 'react-bootstrap';
 import Department from './Department';

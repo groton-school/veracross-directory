@@ -1,3 +1,5 @@
+import 'server-only';
+
 import { LazySecrets } from '@battis/lazy-secrets';
 import {
   authorizationCodeGrant,

@@ -1,7 +1,7 @@
 'use client';
 
-import icon from '@/public/assets/noun-ear-1616239.svg';
-import type { Recording } from '@/src/lib/NameDrop';
+import icon from '#assets/noun-ear-1616239.svg';
+import type { Recording } from '#lib/NameDrop';
 import Image from 'next/image';
 import './styles.scss';
 

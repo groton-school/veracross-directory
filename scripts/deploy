@@ -9,6 +9,8 @@ await Core.run();
 // TODO enable secret manager and publish credentials
 // TODO create service account with secret manager accessor and secret manager version manager permissions
 // TODO write service account email to SERVICE_ACCOUNT
+// TODO generate access-verifier pairs
+// TODO write PUBLIC_URL to env
 await gcloud.batch.run.deployService({
   defaultName: 'Veracross Directory',
   serviceName: 'directory',
@@ -18,8 +20,20 @@ await gcloud.batch.run.deployService({
     ...gcloud.batch.run.DEFAULT_ARGS,
     'set-env-vars': [
       `GOOGLE_CLOUD_PROJECT=${gcloud.projects.active.getIdentifier()}`,
-      `FRAME_ANCESTORS=${await Env.get({ key: 'FRAME_ANCESTORS' })}`
+      ...(await Promise.all(
+        [
+          'PUBLIC_URL',
+          'FRAME_ANCESTORS',
+          'FACSTAFF_ACCESS',
+          'FACSTAFF_VERIFIER',
+          'STUDENT_ACCESS',
+          'STUDENT_VERIFIER',
+          'PARENT_ACCESS',
+          'PARENT_VERIFIER'
+        ].map(async (key) => `${key}=${await Env.get({ key })}`)
+      ))
     ].join(','),
     'allow-unauthenticated': true
-  }
+  },
+  retainRevisions: 3
 });

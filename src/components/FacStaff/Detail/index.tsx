@@ -1,10 +1,10 @@
-import * as IfDefined from '@/src/components/IfDefined';
-import type { Data } from '@/src/lib/Veracross';
-import { Audience } from '@/src/model/Audience';
+import * as IfDefined from '#components/IfDefined';
+import * as NamePronunciation from '#components/NamePronunciation';
+import Photo from '#components/Photo';
+import { Audience } from '#lib/Definitions';
+import type { Data } from '#lib/Veracross';
 import Link from 'next/link';
 import { ModalBody, ModalHeader, Row, Table } from 'react-bootstrap';
-import * as NamePronunciation from '../../NamePronunciation';
-import Photo from '../../Photo';
 import Department from '../Department';
 import './styles.scss';
 

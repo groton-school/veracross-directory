@@ -41,7 +41,7 @@ export function Node({
     if (inline) {
       return (
         <span className="data-field inline">
-          <span className="data">{content}</span>{' '}
+          <span className="data">{content}</span>
         </span>
       );
     } else if (tableRow) {

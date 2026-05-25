@@ -1,4 +1,4 @@
-import * as IfDefined from './Base';
+import * as IfDefined from './IfDefined';
 
 export type Properties = {
   label: string;
@@ -48,7 +48,7 @@ export function Node({
                     content={state_or_province}
                     inline
                     selectAll={false}
-                  />
+                  />{' '}
                   <IfDefined.Node content={zip} inline selectAll={false} />
                 </>
               }
