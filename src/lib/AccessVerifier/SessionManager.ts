@@ -1,5 +1,14 @@
 import 'server-only';
 
+/*
+ * FIXME Safari and third-party cookies
+ *   Safari and third-party cookies [are a beast.](https://github.com/groton-school/slim-lti-partitioned-session/tree/main/src/Actions)
+ *   Right now, this access-verifier exchange is broken by the missing cookie
+ *   in Mobile Safari. It's probably better to look at using a
+ *   BroadcastChannel to communicate the information between `iframe`
+ *   embeds.
+ */
+
 import { Audience, SessionPayload } from '#lib/Definitions';
 import { jwtVerify, SignJWT } from 'jose';
 import { cookies } from 'next/headers';
