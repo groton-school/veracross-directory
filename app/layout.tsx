@@ -14,12 +14,11 @@ type Slots = Readonly<{
   modal?: React.ReactNode;
 }>;
 
-export default async function RootLayout({ children, modal }: Slots) {
+export default async function RootLayout({ children }: Slots) {
   return (
     <html lang="en">
       <body>
         <Container className="mt-3">{children}</Container>
-        {modal}
         <Bootstrap />
       </body>
     </html>
