@@ -1,6 +1,6 @@
 import IfDefined from '@/src/components/IfDefined/IfDefined';
 import * as NamePronunciation from '@/src/components/NamePronunciation';
-import * as Photo from '@/src/components/Photo';
+import Photo from '@/src/components/Photo';
 import { Audience } from '@/src/lib/Definitions';
 import type { Data } from '@/src/lib/Veracross';
 import Link from 'next/link';
@@ -18,7 +18,7 @@ export function Item({ person, ...props }: Properties) {
       <CardBody className="p-3">
         <Row>
           <div className="w-25">
-            <Photo.Node {...person} />
+            <Photo {...person} />
           </div>
           <div className="w-75">
             <h5>
