@@ -46,7 +46,7 @@
     "@qui-cli/core": "^7.0.0",
     "@qui-cli/env": "^5.2.0",
     "@tailwindcss/postcss": "^4.3.0",
-    "@types/bootstrap": "^5.2.10",
+    "@types/bootstrap": "^5.2.11",
     "@types/node": "^22.19.19",
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
